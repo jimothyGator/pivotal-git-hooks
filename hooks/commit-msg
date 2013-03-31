@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+
+# Prepends the PivotalTracker story number
+# Adapted from https://gist.github.com/lorin/2963131
+
+import re
+import subprocess
+import sys
+
+# Regex pattern for gitbranch name. 
+# Example: feature/123456-my-cool-feature
+# Change the pattern if you put the Pivotal Tracker ticket number
+# in a different position, such as at the end of the branch name.
+pattern = r"^(feature|hotfix)/(?P<ticket>\d+)-.+"
+
+
+def get_story():
+    """Return the story id number associated with the current feature branch"""
+    branchname = subprocess.check_output(["/usr/bin/git", "rev-parse", "--abbrev-ref", "HEAD"])
+    match = re.match(pattern, branchname)
+
+    if not match:
+        raise ValueError("Not in feature branch format")
+
+    return match.group('ticket')
+
+
+def prepend_commit_msg(story):
+    """Prepend the commit message with story ID"""
+    msgfile = sys.argv[1]
+
+    with open(msgfile) as f:
+        contents = f.read()
+
+    with open(msgfile, 'w') as f:
+        # Don't add if it's already there
+        if ('#' + story) not in contents:
+            f.write("[#%s] " % story)
+        f.write(contents)
+
+
+def main():
+    # Fail silently
+    try:
+        story = get_story()
+        prepend_commit_msg(story)
+    except Exception, e:
+        print "oops", e
+        sys.exit(1)
+        pass
+
+
+if __name__ == '__main__':
+    main()
