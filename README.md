@@ -1,7 +1,7 @@
 Pivotal Tracker Git Hooks
 =========================
 
-Pivotal Tracker Git Hooks will automatically add the Pivotal Tracker ticket number to commit comments, based on the branch name. This is useful when using feature/topic branches, such as with [git flow](https://github.com/nvie/gitflow), and when [integrating Pivotal Tracker with GitHub](https://www.pivotaltracker.com/help/api?version=v3#github_hooks).
+Pivotal Tracker Git Hooks will automatically add the Pivotal Tracker ticket number to commit comments, based on the branch name. This is useful when using feature/topic branches, such as with [Git Flow](https://github.com/nvie/gitflow), and when [integrating Pivotal Tracker with GitHub](https://www.pivotaltracker.com/help/api?version=v3#github_hooks).
 
 As-is, these hooks expect the branch name to have either a `feature/` or `hotfix/` prefix, followed by the numeric Pivotal Tracker ticket number, a hypen, then the a free form name or description. For example, `feature/123456-my-awesome-feature` or `hotfix/234567-my-awesome-hostfix`. See below for information about changing the hooks to use a different format.
 
@@ -71,3 +71,13 @@ There is actually only a single hook, `commit-msg`, which is also used (via a sy
 Acknowledgements
 ----------------
 This hook was adapted from [Lorin Hochstein's gist](https://gist.github.com/lorin/2963131). I've change it to use a regex for the pattern, to make it easier to adapt to different branch naming conventions, and added a shell script, `apply.sh`, to make it easy to apply the hook to local git repositories. 
+
+References
+----------
+
+For more information, see:
+
+* [Git Flow](https://github.com/nvie/gitflow)
+* [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+* [Pivotal Tracker SCM Post-Commit Message Syntax](https://www.pivotaltracker.com/help/api?version=v3#scm_post_commit_message_syntax)
+* [Pivotal Tracker GitHub Post-Receive Hooks](https://www.pivotaltracker.com/help/api?version=v3#github_hooks)
