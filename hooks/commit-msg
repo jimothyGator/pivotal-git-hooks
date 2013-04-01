@@ -7,7 +7,7 @@ import re
 import subprocess
 import sys
 
-# Regex pattern for gitbranch name. 
+# Regex pattern for gitbranch name.
 # Example: feature/123456-my-cool-feature
 # Change the pattern if you put the Pivotal Tracker ticket number
 # in a different position, such as at the end of the branch name.
@@ -40,14 +40,11 @@ def prepend_commit_msg(story):
 
 
 def main():
-    # Fail silently
     try:
         story = get_story()
         prepend_commit_msg(story)
-    except Exception, e:
-        print "oops", e
-        sys.exit(1)
-        pass
+    except Exception:
+        sys.exit(0)
 
 
 if __name__ == '__main__':
