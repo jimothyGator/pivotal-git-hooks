@@ -22,7 +22,7 @@ Usage
 To apply these hooks to your local repository:
 
 
-1. `git clone https://github.com/jimothyGator/pivotal-git-hooks`
+1. `git clone https://github.com/jimothyGator/pivotal-git-hooks.git`
 2. `cd pivotal-git-hooks`
 3. `./apply.sh /path/to/your/repository`
 
