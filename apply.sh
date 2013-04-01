@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Activates the commit-msg and prepare-commit-msg hooks by
+# creating symbolic links in projects' git hooks directory.
+
 usage() {
 	echo "usage: $(basename $0) [-f] repo [repo ...]"
 	echo 
@@ -13,7 +16,7 @@ SCRIPTPATH=`pwd`
 popd > /dev/null
 
 if [[ "$1" = "-f" ]]; then
-	LN_OPTS="-f"
+	LN_OPTS="-fn"
 	shift
 fi
 
