@@ -36,7 +36,7 @@ You may specify multiple repositories in a single command:
 
     ./apply.sh ~/projects/project1 ~/projects/project2
     
-Then, create feature (or topic) branch, such as `feature/123456-my-cool-feature`. Use git as you normally would to stage and commit files. For example:
+Then, create feature (or topic) branch, such as `feature/123456-my-awesome-feature`. Use git as you normally would to stage and commit files. For example:
 
     git commit -m "making this a success of monumental proportions"   
 
