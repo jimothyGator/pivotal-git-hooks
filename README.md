@@ -1,8 +1,6 @@
 Pivotal Tracker Git Hooks
 =========================
 
-[Usage](#usage)
-
 Pivotal Tracker Git Hooks will automatically add the Pivotal Tracker ticket number to commit comments, based on the branch name. This is useful when using feature/topic branches, such as with [Git Flow](https://github.com/nvie/gitflow), and when [integrating Pivotal Tracker with GitHub](https://www.pivotaltracker.com/help/api?version=v3#github_hooks).
 
 As-is, these hooks expect the branch name to have either a `feature/` or `hotfix/` prefix, followed by the numeric Pivotal Tracker ticket number, a hypen, then the a free form name or description. For example, `feature/123456-my-awesome-feature` or `hotfix/234567-my-awesome-hostfix`. See below for information about changing the hooks to use a different format.
