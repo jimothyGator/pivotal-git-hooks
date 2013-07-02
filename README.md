@@ -36,11 +36,11 @@ You may specify multiple repositories in a single command:
 
     ./apply.sh ~/projects/project1 ~/projects/project2
     
-Then, create feature (or topic) branch, such as `feature/123456-my-cool-feature`. Use git as you normally would to stage and commit files. For example:
+Then, create feature (or topic) branch, such as `feature/123456-my-awesome-feature`. Use git as you normally would to stage and commit files. For example:
 
     git commit -m "making this a success of monumental proportions"   
 
-The actually commit comment will be "[#123456] made this a success of monumental proportions".
+The actually commit comment will be `[#123456] making this a success of monumental proportions`.
 
 If you specify the ticket number in the comment, preceded by a `#`, the hooks will not add the ticket number a second time. This allows you to use messages such as `[Finished #123456] made this a success of monumental proportions`, which tells Pivotal Tracker to automatically mark the story as complete. (See [SCM Post-Commit Message Syntax](https://www.pivotaltracker.com/help/api?version=v3#scm_post_commit_message_syntax) for more information). In this case, the original commit message will be used, unchanged.
 
