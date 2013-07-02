@@ -11,7 +11,7 @@ import sys
 # Example: feature/123456-my-cool-feature
 # Change the pattern if you put the Pivotal Tracker ticket number
 # in a different position, such as at the end of the branch name.
-pattern = r"^(feature|hotfix)/(?P<ticket>\d+)-.+"
+pattern = r"^(feature|hotfix|fix)/(?P<ticket>\d+)-.+"
 
 
 def get_story():

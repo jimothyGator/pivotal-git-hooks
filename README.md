@@ -3,7 +3,7 @@ Pivotal Tracker Git Hooks
 
 Pivotal Tracker Git Hooks will automatically add the Pivotal Tracker ticket number to commit comments, based on the branch name. This is useful when using feature/topic branches, such as with [Git Flow](https://github.com/nvie/gitflow), and when [integrating Pivotal Tracker with GitHub](https://www.pivotaltracker.com/help/api?version=v3#github_hooks).
 
-As-is, these hooks expect the branch name to have either a `feature/` or `hotfix/` prefix, followed by the numeric Pivotal Tracker ticket number, a hypen, then the a free form name or description. For example, `feature/123456-my-awesome-feature` or `hotfix/234567-my-awesome-hostfix`. See below for information about changing the hooks to use a different format.
+As-is, these hooks expect the branch name to have either a `feature/`, `hotfix/` or `fix/` prefix, followed by the numeric Pivotal Tracker ticket number, a hypen, then the a free form name or description. For example, `feature/123456-my-awesome-feature` or `hotfix/234567-my-awesome-hostfix`. See below for information about changing the hooks to use a different format.
 
 A hook is provided for both `commit-msg` and `prepare-commit-msg`. The `commit-msg` hook is used when providing a message on the command-line: `git commit -m "…"`. The hook will take the Pivotal Tracker ticket number from the current branch and prepend it to the specified message. 
 
@@ -58,10 +58,10 @@ Then when committing, hit `a` and append your commit message after the Pivotal T
 Using a Different Branch Name Format
 ------------------------------------
 
-If your branch names use a different format that the default, you may edit the hook to provide a different pattern. The hooks expect branch names to resemble `feature/123456-my-awesome-feature` or `hotfix/234567-my-awesome-hostfix`, but if you use different prefixes, or put the ticket number in a different position (e.g., at the end of the branch name), simply edit `commit-msg` and change the following line to match your chosen pattern:
+If your branch names use a different format that the default, you may edit the hook to provide a different pattern. The hooks expect branch names to resemble `feature/123456-my-awesome-feature`, `hotfix/234567-my-awesome-hostfix`, or `fix/345678-my-awesome-bug-fix`, but if you use different prefixes, or put the ticket number in a different position (e.g., at the end of the branch name), simply edit `commit-msg` and change the following line to match your chosen pattern:
 
 ```python
-pattern = r"^(feature|hotfix)/(?P<ticket>\d+)-.+"
+pattern = r"^(feature|hotfix|fix)/(?P<ticket>\d+)-.+"
 ```
 
 The important part is `(?P<ticket>\d+)`; you must have a group with this name in your regex pattern for the hook to work.
