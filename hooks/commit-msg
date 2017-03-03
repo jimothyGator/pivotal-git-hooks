@@ -20,7 +20,7 @@ def get_story():
     match = re.match(pattern, branchname)
 
     if not match:
-        raise ValueError("Not in feature branch format")
+        raise ValueError("Branch name not in proper format: %s" % branchname)
 
     return match.group('ticket')
 
@@ -43,8 +43,9 @@ def main():
     try:
         story = get_story()
         prepend_commit_msg(story)
-    except Exception:
-        sys.exit(0)
+    except Exception, e:
+        sys.stderr.write(e)
+        sys.exit(1)
 
 
 if __name__ == '__main__':
